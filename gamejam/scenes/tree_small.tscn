@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://xvdh076ht4ah"]
+
+[ext_resource type="Texture2D" uid="uid://d5ojp5qblwhm" path="res://assets/strom.png" id="1_02eyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vplca"]
+radius = 4.4682083
+height = 13.676834
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=332895824]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=395175811]
+texture = ExtResource("1_02eyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314742901]
+position = Vector2(7.1054274e-15, 26.000002)
+scale = Vector2(2.68564, 0.8773957)
+shape = SubResource("CapsuleShape2D_vplca")
