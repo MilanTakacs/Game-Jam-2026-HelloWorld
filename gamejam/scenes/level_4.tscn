@@ -182,6 +182,7 @@ sources/3 = SubResource("TileSetAtlasSource_x7blo")
 [node name="Level4" type="Node" unique_id=891403678]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=154009140]
+position = Vector2(0, 1)
 tile_set = SubResource("TileSet_qsmat")
 format = 2
 layer_0/name = "back"

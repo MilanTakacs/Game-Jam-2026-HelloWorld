@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1l8hxt8dm2lv"]
+
+[ext_resource type="Script" uid="uid://dl5r70h7mgq4u" path="res://scripts/mmmusic.gd" id="1_7kfhv"]
+
+[node name="MusicPlayerMenu" type="Node2D" unique_id=356653245]
+script = ExtResource("1_7kfhv")
