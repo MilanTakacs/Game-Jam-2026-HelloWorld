@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://cijlip6hlw877"]
+
+[ext_resource type="Texture2D" uid="uid://qvq8mi63hkct" path="res://assets/ohen.webp" id="1_52nqi"]
+
+[sub_resource type="GDScript" id="GDScript_52nqi"]
+script/source = "extends Node2D
+
+var tilemap: TileMap
+@export var spread_chance: float = 0.4
+
+func _on_timer_timeout():
+	spread_check()
+
+func spread_check():
+	if get_tree().get_nodes_in_group(\"fires\").size() >= 10:
+		return
+		
+	tilemap = get_tree().get_nodes_in_group(\"level\")[0]
+	if not tilemap: return
+
+	var current_tile = tilemap.local_to_map(global_position)
+	
+	var directions = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]
+	
+	for dir in directions:
+		if randf() < spread_chance:
+			var target_tile = current_tile + dir
+			print(target_tile)
+			try_spread_to(target_tile)
+
+func try_spread_to(tile_pos: Vector2i):
+	var data = tilemap.get_cell_tile_data(0, tile_pos)
+	if data:
+		var typ = data.get_custom_data(\"horlave\")
+		# 2. Skontrolujeme, či tam už oheň nie je (aby sme nerobili duplikáty)
+		if typ == \"horlave\" and not has_fire_at(tile_pos):
+			spawn_fire_at(tile_pos)
+
+func has_fire_at(tile_pos: Vector2i) -> bool:
+	# Toto je dôležité: skontrolujeme v skupine \"fires\", či niekto nie je na tej istej pozícii
+	for fire in get_tree().get_nodes_in_group(\"fires\"):
+		if tilemap.local_to_map(fire.global_position) == tile_pos:
+			return true
+	return false
+
+func spawn_fire_at(tile_pos: Vector2i):
+	var data = tilemap.get_cell_tile_data(0, tile_pos)
+	var new_fire = load(\"res://scenes/fire.tscn\").instantiate()
+	tilemap.add_child(new_fire)
+	new_fire.add_to_group(\"fires\") # Pridáme do skupiny pre kontrolu duplikátov
+	new_fire.global_position = tilemap.map_to_local(tile_pos)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqmqg"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5mbl"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rach5"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txieb"]
+atlas = ExtResource("1_52nqi")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l61p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqmqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5mbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rach5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txieb")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10wrr"]
+size = Vector2(10, 11)
+
+[node name="fire" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["fire"]]
+script = SubResource("GDScript_52nqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_4l61p")
+animation = &"fire"
+autoplay = "fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_10wrr")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4m5qabuffvhm"]
+
+[ext_resource type="Script" uid="uid://bqdnq7naxbief" path="res://scripts/level_1_cleared.gd" id="1_f4of2"]
+
+[sub_resource type="Gradient" id="Gradient_4jsce"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f4of2"]
+gradient = SubResource("Gradient_4jsce")
+
+[node name="Level1Cleared" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4of2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Hasičák prešiel level 1!"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_f4of2")

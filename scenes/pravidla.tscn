@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cha3qkrlofyfs"]
+
+[ext_resource type="Script" uid="uid://ukirylrol2da" path="res://scripts/pravidla.gd" id="1_01fck"]
+
+[node name="pravidla" type="Node2D"]
+script = ExtResource("1_01fck")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1162.0
+offset_bottom = 656.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 18.0
+offset_right = 1120.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 32
+text = "Dostaň Hasičáka späť do jeho auta!
+
+PRAVIDLÁ
+
+WASD = pohyb hore / dole / doľava / doprava
+Klik = aplikácia obsahu Hasičáka
+2 / 3 / 4 = zmena obsahu Hasičáka na vodu / piesok / penu
+Medzerovník = doplnenie obsahu ak Hasičák stojí na správnom mieste
+
+Polená  a žalude hasí voda, pneumatiky a kanistre hasí pena,
+ohnivé gule hasí piesok
+
+ENTER = začať hru"

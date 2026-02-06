@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://brvel342dxk80"]
+
+[ext_resource type="Texture2D" uid="uid://b3xjpjwwhsryp" path="res://assets/tree_pine_snow.png" id="1_txrai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oc1kf"]
+radius = 4.1188493
+
+[node name="TreePine" type="StaticBody2D"]
+z_index = 1
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_txrai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+scale = Vector2(1.4775063, 1.4524277)
+shape = SubResource("CircleShape2D_oc1kf")

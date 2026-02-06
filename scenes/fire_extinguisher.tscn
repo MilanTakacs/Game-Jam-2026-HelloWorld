@@ -1,0 +1,234 @@
+[gd_scene load_steps=24 format=3 uid="uid://f8nmq0q612xw"]
+
+[ext_resource type="Script" uid="uid://ci06wotfixtc7" path="res://scripts/fire_extinguisher.gd" id="1_385mk"]
+[ext_resource type="Script" uid="uid://j8uh7qytgrne" path="res://scripts/character_body_2d.gd" id="1_ojk4a"]
+[ext_resource type="Texture2D" uid="uid://dni8g0i0k2s5o" path="res://assets/Hasicak_animacie.webp" id="3_385mk"]
+[ext_resource type="Texture2D" uid="uid://b763jcksdqcly" path="res://assets/Hasicak_animacie_2.webp" id="3_ys11c"]
+[ext_resource type="Script" uid="uid://c1w7f5qiyxmo2" path="res://scripts/hearts_container.gd" id="4_4pe2v"]
+[ext_resource type="Script" uid="uid://ctcrj4je1jtjo" path="res://scripts/camera_2d.gd" id="4_lsxnb"]
+[ext_resource type="AudioStream" uid="uid://cexjnu7j2jqwl" path="res://sounds/fire-extinguishing.mp3" id="7_7y6p1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hr34"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5q16"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(96, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcpep"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(96, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpwkp"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(96, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ppo5"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(96, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y6p1"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o64my"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf4t5"]
+atlas = ExtResource("3_ys11c")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys11c"]
+atlas = ExtResource("3_385mk")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qckke"]
+atlas = ExtResource("3_385mk")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bxek"]
+atlas = ExtResource("3_385mk")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kqa8"]
+atlas = ExtResource("3_385mk")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n032c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hr34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5q16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcpep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpwkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ppo5")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y6p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o64my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf4t5")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys11c")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qckke")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bxek")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kqa8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7joyc"]
+size = Vector2(15, 24)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojk4a"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+inherit_velocity_ratio = 1.0
+spread = 30.0
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+damping_max = 50.000004
+color = Color(0.2722579, 0.7519398, 0.9899221, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7joyc"]
+
+[node name="FireExtinguisher" type="Node2D"]
+script = ExtResource("1_385mk")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+script = ExtResource("1_ojk4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_n032c")
+animation = &"crouch"
+autoplay = "right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_7joyc")
+
+[node name="Marker2DRight" type="Marker2D" parent="Player"]
+position = Vector2(7, 2)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(7, 2)
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+script = ExtResource("4_lsxnb")
+
+[node name="Marker2DLeft" type="Marker2D" parent="Player"]
+position = Vector2(-7, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+z_index = -1
+position = Vector2(6, 1)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ojk4a")
+
+[node name="Marker2DUp" type="Marker2D" parent="Player"]
+position = Vector2(0, -5)
+
+[node name="Marker2DDown" type="Marker2D" parent="Player"]
+position = Vector2(4, 2)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Player"]
+shape = SubResource("CircleShape2D_7joyc")
+target_position = Vector2(64, 0)
+collision_mask = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stock_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1023.0
+offset_top = 592.0
+offset_right = 1136.0
+offset_bottom = 636.0
+
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer"]
+z_index = 5
+offset_left = 13.0
+offset_top = 10.0
+offset_right = 404.0
+offset_bottom = 51.0
+script = ExtResource("4_4pe2v")
+
+[node name="EnemiesDestroyed" type="Label" parent="CanvasLayer"]
+offset_left = 1087.0
+offset_top = -2.0
+offset_right = 1121.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="Message" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.063
+offset_left = 12.0
+offset_top = 587.0
+offset_right = 265.416
+offset_bottom = 589.176
+theme_override_font_sizes/font_size = 32
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7y6p1")
+bus = &"SFX"

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://3s6vuwvd1myf"]
+
+[ext_resource type="Texture2D" uid="uid://bpd1pqkehdaim" path="res://assets/strom.png" id="1_avsvi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vplca"]
+radius = 4.4682083
+height = 13.676834
+
+[node name="Tree" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_avsvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.1054274e-15, 26.000002)
+scale = Vector2(2.68564, 0.8773957)
+shape = SubResource("CapsuleShape2D_vplca")
