@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://5mnj1uqqwvvs"]
 
 [ext_resource type="Texture2D" uid="uid://cdkf01j3mpku6" path="res://assets/free_pixel_16_woods.png" id="1_014kd"]
+[ext_resource type="Script" uid="uid://c77dblsqubonu" path="res://scenes/level_1.gd" id="1_pa8r4"]
 [ext_resource type="Texture2D" uid="uid://b3jwjam2jrjtu" path="res://assets/Cesta.png" id="2_4nkto"]
 [ext_resource type="PackedScene" uid="uid://cah672qtyjo5f" path="res://scenes/tree.tscn" id="2_rus8k"]
 [ext_resource type="PackedScene" uid="uid://cp5ca8v7fvgjq" path="res://scenes/tree_pine.tscn" id="3_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://xvdh076ht4ah" path="res://scenes/tree_small.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://b8dw1j5n73pe" path="res://scenes/fade_transition.tscn" id="7_15mv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
 texture = ExtResource("1_014kd")
@@ -147,6 +149,7 @@ sources/0 = SubResource("TileSetAtlasSource_bswci")
 sources/1 = SubResource("TileSetAtlasSource_fcfvj")
 
 [node name="Level1" type="Node" unique_id=997563259]
+script = ExtResource("1_pa8r4")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1669127199]
 position = Vector2(704, 186)
@@ -296,3 +299,5 @@ position = Vector2(463, 500)
 
 [node name="TreeSmall12" parent="Trees/TreeSmall" unique_id=138490528 instance=ExtResource("4_5xbjy")]
 position = Vector2(408, 97)
+
+[node name="FadeTransition" parent="." unique_id=1008015694 instance=ExtResource("7_15mv3")]
