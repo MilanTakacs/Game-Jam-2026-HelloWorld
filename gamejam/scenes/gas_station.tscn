@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c51teq7450v8q"]
+
+[ext_resource type="Texture2D" uid="uid://c00petit80l5w" path="res://assets/gas_station_v2_static.png" id="1_h7ese"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwdhq"]
+radius = 5.0
+height = 132.0
+
+[node name="GasStation" type="StaticBody2D" unique_id=549877335]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1703954117]
+texture = ExtResource("1_h7ese")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2023869642]
+position = Vector2(-1, 33)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jwdhq")
